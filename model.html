@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>my final proj</title>
+    <style>
+      body {
+        background-color: bisque;
+      }
+      ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #333;
+      }
+      li {
+        float: left;
+      }
+      li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+      }
+      li a:hover {
+        background-color: #111;
+      }
+    </style>
+  </head>
+  <body>
+    <ul>
+      <li><a class="active" href=projecthtml><button>Home</button></a></li>
+      <li><a href=modelhtml><button>Model</button></a></li>
+      <li><a href=abouthtml><button>About</button></a></li>
+    </ul>
+    <center>
+      <h1>Trained Model</h1>
+
+      <form action="/predict" method="post">
+        <!-- <input type="text" name="data"> -->
+        <textarea
+          cols="30"
+          rows="10"
+          name="data"
+          placeholder="Type Your Message"
+        ></textarea
+        ><br /><br />
+        <input type="submit" />
+      </form>
+      <br />
+      <h2>Intersted to see the data that used for training</h2>
+      <form action="/data" method="post">
+        <table>
+          <tr>
+            <td>
+              <label>Select Row NO</label>
+            </td>
+            <td>
+              <input
+                type="number"
+                name="num1"
+                min="1"
+                placeholder="Enter a number"
+              />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label>Select No of Rows</label>
+            </td>
+            <td>
+              <input
+                type="number"
+                name="num"
+                max="5000"
+                placeholder="Enter a number"
+              />
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <input
+                type="submit"
+                name="v"
+                value="click me to see trained data"
+              />
+            </td>
+          </tr>
+        </table>
+      </form>
+<br>
+<br>  
+      <center>
+      <div class="row">
+        {% if prediction %}
+        <h2 class="text-warning">{{prediction}}</h2>
+        {% endif %}
+      </div>
+    </center>
+  </body>
+</html>
